@@ -1,0 +1,12 @@
+{
+  "rpc_url": "https://rpc1.goodchainscan.org/",
+  "pair_address": "0x4575De99337ccd0A63BF4e20A33BFd776e40e215",
+  "token0_address": "0x1c7ca2f2a0de1ffcce397b539acda16e054ae348",
+  "token1_address": "0xdde17d5ef0cce745ce35f5ccd618b728fe7164ac",
+  "interval_minutes": 5,
+  "threshold_low": 1.0,
+  "threshold_high": 3.0,
+  "ntfy_topic": "your-unique-topic-name-here",
+  "notify_only_on_state_change": true,
+  "service_running": false
+}
