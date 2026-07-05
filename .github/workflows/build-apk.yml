@@ -1,0 +1,27 @@
+name: Build mycgc APK
+
+on:
+  workflow_dispatch: {}
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      # 用社区维护的 buildozer-action，它内部已经处理好了 Android SDK/NDK、
+      # Cython 版本匹配等一堆环境细节，比手写 apt/pip 命令稳定很多。
+      - name: Build APK with buildozer-action
+        id: buildozer
+        uses: ArtemSBulgakov/buildozer-action@v1
+        with:
+          command: buildozer android debug
+          buildozer_version: stable
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: mycgc-debug-apk
+          path: ${{ steps.buildozer.outputs.filename }}
